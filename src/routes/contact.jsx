@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
 import { Form, useLoaderData } from "react-router-dom";
 import { getContact } from "../contacts";
+
 export async function loader({ params }) {
 	const contact = await getContact(params.contactId);
 	return { contact };
@@ -72,7 +72,9 @@ export default function Contact() {
 	);
 }
 
+// eslint-disable-next-line react/prop-types
 function Favorite({ contact }) {
+	// eslint-disable-next-line react/prop-types
 	const favorite = contact.favorite;
 	return (
 		<Form method="post">
@@ -86,9 +88,3 @@ function Favorite({ contact }) {
 		</Form>
 	);
 }
-
-Favorite.propTypes = {
-	contact: PropTypes.shape({
-		favorite: PropTypes.bool.isRequired,
-	}).isRequired,
-};
